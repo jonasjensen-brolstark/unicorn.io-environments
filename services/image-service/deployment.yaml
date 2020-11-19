@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: demo
+  labels:
+    app: image-service
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.imageservice: glob:git*
+spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: image-service
+  template:
+    metadata:
+      labels:
+        app: image-service
+    spec:
+      replicas: 3
+      containers:
+      - name: imageservice
+        image: jonj/unicorn-io-src-services-image:gitd1891f4ce9b45a8941ef726d2f9af2243be1f4a9
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+      
