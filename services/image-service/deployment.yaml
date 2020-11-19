@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,10 +25,10 @@ spec:
     spec:
       containers:
       - name: imageservice
-        image: jonj/unicorn-io-src-services-image:gitd1891f4ce9b45a8941ef726d2f9af2243be1f4a9
+        image: jonj/unicorn-io-src-services-image:gita2f16cb062fa459142c1434bfa5a27b51ed4d027
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
           containerPort: 80
           protocol: TCP
-      
+
