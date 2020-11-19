@@ -9,9 +9,10 @@ metadata:
     fluxcd.io/automated: "true"
     fluxcd.io/tag.imageservice: glob:git*
 spec:
+  replicas: 3
   strategy:
     rollingUpdate:
-      maxUnavailable: 0
+      maxUnavailable: 1
     type: RollingUpdate
   selector:
     matchLabels:
@@ -21,7 +22,6 @@ spec:
       labels:
         app: image-service
     spec:
-      replicas: 3
       containers:
       - name: imageservice
         image: jonj/unicorn-io-src-services-image:gitd1891f4ce9b45a8941ef726d2f9af2243be1f4a9
