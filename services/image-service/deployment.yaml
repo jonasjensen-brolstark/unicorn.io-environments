@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: imageservice
-        image: jonj/unicorn-io-src-services-image:git3d85ca387d80bac670e8ac431c3acb771598cbda
+        image: jonj/unicorn-io-src-services-image:gitb56725f201b6e67393e388c978972c02532a3958
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
